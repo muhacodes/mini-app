@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	// redirect to create form route
+    return redirect()->route('data.create');
 });
+
+
+// return data
+Route::get('home/datas', [HomeController::class, 'index'])->name('data.index');
+
+// show creation form
+Route::get('home/data/create', [HomeController::class, 'create'])->name('data.create'); 
+
+// post data
+Route::post('home/data/post', [HomeController::class, 'store'])->name('data.store');
