@@ -18,6 +18,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 			<h2> |Form Data </h2>
+			<a class="btn btn-info" href="{{ route('pdf') }}"> Download all as PDF </a>
 			<table width="100%" class="table-dark">
 				<tr>
 					<th> Name: </th>
@@ -32,7 +33,7 @@
 					<td> {{ $data->email }} </td>
 					<td> {{ $data->phone }} </td>
 					<td> {{ $data->dob }}</td>
-					<td> <a class="btn-sm btn-primary" href="#"> PDF </a> </td>
+					<td> <a href="{{ route('pdf_data', $data->id)  }}" class="btn-sm btn-primary" href="#"> PDF </a> </td>
 				</tr>
 				@endforeach
 			</table>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -104,5 +105,29 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function create_pdf()
+    {
+        $data = data::all();
+        $pdf = PDF::loadView('pdf_data', compact('data'));
+
+        
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+    }
+
+    public function CreatePdfData($id){
+        $data = data::find($id);
+
+        $pdf = PDF::loadView('pdf_view', [
+        'name' => $data->name,
+        'dob' => $data->dob,
+        'email' => $data->email,
+        'phone' => $data->phone,
+        // ... and more data if you like
+        ]);
+
+        return $pdf->download('data.pdf');
     }
 }

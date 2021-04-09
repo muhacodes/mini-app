@@ -21,10 +21,16 @@ Route::get('/', function () {
 
 
 // return data
-Route::get('home/datas', [HomeController::class, 'index'])->name('data.index');
+Route::get('home/data', [HomeController::class, 'index'])->name('data.index');
 
 // show creation form
 Route::get('home/data/create', [HomeController::class, 'create'])->name('data.create'); 
 
 // post data
 Route::post('home/data/post', [HomeController::class, 'store'])->name('data.store');
+
+// route for pdf
+
+Route::get('home/data/pdf', [HomeController::class, 'create_pdf'])->name('pdf');
+
+Route::get('home/data/pdf/{id}', [HomeController::class, 'CreatePdfData'])->name('pdf_data');
