@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\data;
+use App\Models\SecondData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
@@ -20,11 +21,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function email()
-    {
-        return 'working';
 
-    }
     public function index()
     {
         $data = data::all();
@@ -67,7 +64,8 @@ class HomeController extends Controller
         ]);
 
         if($create){
-            return redirect()->route('data.index');
+            return $this->Dbsave($request->all());
+            
         }
 
         abort(500);
@@ -140,5 +138,17 @@ class HomeController extends Controller
         ]);
 
         return $pdf->download('single-data-client.pdf');
+    }
+    public function Dbsave($data) {
+        $second_data = new SecondData;
+        $second_data->setConnection('mysql2');
+        $second_data->name = $data['name'];
+        $second_data->email = $data['email'];
+        $second_data->phone = $data['phone'];
+        $second_data->dob = $data['date-of-birth'];
+
+        $second_data->save();
+
+        return redirect()->route('data.index');
     }
 }
