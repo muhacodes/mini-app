@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Data | create </title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+@extends('base')
+@section('title') <title> Data|create </title>  @stop
+
+@section('content')
 
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-lg-6">
 			<h2> Form Data! </h2>
+			<a class="btn btn-danger" href="{{ route('logout') }}"> Logout </a>
 			@if ($errors->any())
 				<div class="alert alert-danger">
 				    <ul>
@@ -40,6 +38,4 @@
 		</div>
 	</div>
 </div>
-
-</body>
-</html>
+@stop

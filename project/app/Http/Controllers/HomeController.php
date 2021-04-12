@@ -11,6 +11,7 @@ use App\Mail\SendPdf;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 
 class HomeController extends Controller
@@ -22,10 +23,20 @@ class HomeController extends Controller
      */
 
 
+    public function home()
+    {
+        
+        return redirect()->route('data.create');
+    }
     public function index()
     {
         $data = data::all();
+        // return $data;
         return view('data', compact('data'));
+
+        
+
+        
     }
 
     /**

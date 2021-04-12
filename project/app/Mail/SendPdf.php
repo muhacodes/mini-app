@@ -30,6 +30,7 @@ class SendPdf extends Mailable
      */
     public function build()
     {
+        
         $data = data::all();
         $pdf = PDF::loadView('pdf_data', compact('data'));
         $pdfdownload = $pdf->download('pdf_file.pdf');

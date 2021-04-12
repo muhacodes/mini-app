@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Data| </title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+@extends('base')
+@section('title') 
+<title> Data|show </title>
 <style type="text/css">
 	table th{
 		border: 1px solid black;
@@ -14,12 +11,14 @@
 		border: 1px solid gray;
 	}
 </style>
-<body>
+@stop
+@section('content')
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-lg-12">
 			<h2> |Form Data </h2>
+			<a class="btn btn-danger" href="{{ route('logout') }}"> Logout </a>
 			<a class="btn btn-info" href="{{ route('pdf') }}"> Download all as PDF </a>
 			<a class="btn btn-primary" href="{{ route('data.create') }}"> Enter Data </a>
 			<table width="100%" class="table-dark">
@@ -43,6 +42,7 @@
 		</div>
 	</div>
 </div>
+@stop
 
 </body>
 </html>
