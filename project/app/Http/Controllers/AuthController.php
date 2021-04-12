@@ -13,7 +13,7 @@ class AuthController extends Controller
    	public function register(Request $request)
    	{
    		if($request->isMethod('get')){
-
+        // if there is a user in the db. redirect to login form. otherwise register
         $data = User::all()->first();
         if ($data){
           return redirect()->route('login');
@@ -49,14 +49,15 @@ class AuthController extends Controller
 
     public function logout()
     {
-
       Auth::logout();
       return redirect()->route('login');
     }
 
     public function login(Request $request)
     {
+
       if($request->isMethod('get')){
+        // if there is no user in the db.. redirect to register a user otherwise contiue to login form
         $data = User::all()->first();
         if (!$data){
           return redirect()->route('register');
@@ -73,8 +74,5 @@ class AuthController extends Controller
           return redirect()->route('data.create');
             // return 'worked';
         }
-
-
-
     }
 }
