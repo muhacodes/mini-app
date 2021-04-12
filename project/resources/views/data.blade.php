@@ -10,15 +10,18 @@
 	}
 	table td{
 		color: lightgray;
+		padding: 7px;
+		border: 1px solid gray;
 	}
 </style>
 <body>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-lg-8">
+		<div class="col-lg-12">
 			<h2> |Form Data </h2>
 			<a class="btn btn-info" href="{{ route('pdf') }}"> Download all as PDF </a>
+			<a class="btn btn-primary" href="{{ route('data.create') }}"> Enter Data </a>
 			<table width="100%" class="table-dark">
 				<tr>
 					<th> Name: </th>

@@ -29,8 +29,10 @@ Route::get('home/data/create', [HomeController::class, 'create'])->name('data.cr
 // post data
 Route::post('home/data/post', [HomeController::class, 'store'])->name('data.store');
 
-// route for pdf
 
+// route for pdf
 Route::get('home/data/pdf', [HomeController::class, 'create_pdf'])->name('pdf');
 
 Route::get('home/data/pdf/{id}', [HomeController::class, 'CreatePdfData'])->name('pdf_data');
+
+Route::get('home/mail', [HomeController::class, 'email'])->name('email');

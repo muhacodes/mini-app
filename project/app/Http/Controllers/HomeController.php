@@ -6,6 +6,11 @@ use App\Models\data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
+use App\Mail\SendPdf;
+use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -14,6 +19,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function email()
+    {
+        return 'working';
+
+    }
     public function index()
     {
         $data = data::all();
@@ -114,7 +125,7 @@ class HomeController extends Controller
 
         
         // download PDF file with download method
-        return $pdf->download('pdf_file.pdf');
+        return $pdf->download('data.pdf');
     }
 
     public function CreatePdfData($id){
@@ -128,6 +139,6 @@ class HomeController extends Controller
         // ... and more data if you like
         ]);
 
-        return $pdf->download('data.pdf');
+        return $pdf->download('single-data-client.pdf');
     }
 }
